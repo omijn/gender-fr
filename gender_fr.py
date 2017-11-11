@@ -7,4 +7,12 @@ c = conn.cursor()
 def noun_gender(noun):
 	n = (noun,)
 	c.execute("SELECT gender_id FROM word WHERE word=?", n)
-	return c.fetchone()[0]
+	
+	try:
+		g = c.fetchone()[0]
+		return g
+	except Exception as e:
+		return 4
+
+if __name__ == '__main__':
+	print(noun_gender(sys.argv[1]))
