@@ -1,10 +1,12 @@
 import sys
 import sqlite3
 
-conn = sqlite3.connect('french_words.sqlite')
+conn = sqlite3.connect('language/gender/french_words.sqlite')
 c = conn.cursor()
 
-def noun_gender(noun):
+genders = {1: "masculine", 2: "feminine", 3: "both masculine and feminine"}
+
+def get_gender(noun):
 	n = (noun,)
 	c.execute("SELECT gender_id FROM word WHERE word=?", n)
 	
@@ -15,4 +17,4 @@ def noun_gender(noun):
 		return 4
 
 if __name__ == '__main__':
-	print(noun_gender(sys.argv[1]))
+	print(get_gender(sys.argv[1]))
