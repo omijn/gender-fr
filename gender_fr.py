@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 
-conn = sqlite3.connect('language/gender/french_words.sqlite')
+conn = sqlite3.connect('language/gender/french_words.sqlite', check_same_thread=False)
 c = conn.cursor()
 
 genders = {1: "masculine", 2: "feminine", 3: "both masculine and feminine"}
